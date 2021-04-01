@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Table, { DataRequest, Column } from './Table';
 
-function App() {
+type ColumnsType = Column[]
+
+const App: React.FC = () => {
+
+  const data: DataRequest = {
+    data: [
+      {
+        name: 'Lauro Damasceno',
+        email: 'laurodamasceno@gmail.com'
+      },
+      {
+        name: 'Orual Onecsamad',
+        email: 'orualonecsamad@gmail.com'
+      }
+    ],
+    total: 1,
+    totalPerPage: 10
+  }
+
+  const columns: ColumnsType = [
+    { name: 'Nome', data: 'name' },
+    { name: 'Email', data: 'email' },
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>DJ - DataTable</h1>
+      <hr />
+      <Table data={data} columns={columns} />
     </div>
-  );
+  )
 }
 
 export default App;
